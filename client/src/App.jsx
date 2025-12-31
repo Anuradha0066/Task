@@ -17,14 +17,13 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+        if (loading) return <div>Loading...</div>;
+
+<Route
+  path="/dashboard"
+  element={<ProtectedRoute>{user ? <Dashboard /> : <Navigate to="/login" />}</ProtectedRoute>}
+/>
+
 
         <Route
           path="/profile"
