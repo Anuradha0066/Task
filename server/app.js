@@ -13,7 +13,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://sage-sorbet-03f25b.netlify.app'],
+  origin: ['http://localhost:5173', 'https://sage-sorbet-03f25b.netlify.app/'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
