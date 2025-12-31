@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://task-7fy7.onrender.com/api",
+  withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {

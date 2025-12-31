@@ -12,7 +12,14 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',  // Vite dev
+    'https://sage-sorbet-03f25b.netlify.app/'  // Production frontend
+  ],
+  credentials: true  // 🔥 Critical for auth cookies
+}));
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
