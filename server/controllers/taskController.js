@@ -17,3 +17,13 @@ export const deleteTask = async (req, res) => {
   await Task.findByIdAndDelete(req.params.id);
   res.json({ message: "Task removed" });
 };
+
+export const completeTask = async (req, res) => {
+  const task = await Task.findOne({ _id: req.params.id, user: req.user.id });
+  if (!task) return res.status(404).json({ message: "Task not found" });
+
+  task.status = task.status === "pending" ? "completed" : "pending";
+  await task.save();
+
+  res.json(task); // Return updated task
+};

@@ -26,6 +26,24 @@ export default function Dashboard() {
     fetchTasks();
   };
 
+  const toggleTask = async (id) => {
+    try {
+      const res = await api.patch(`/tasks/${id}`, { 
+      status: 'toggle'  // ← NOW SENT TO BACKEND
+    });
+    
+      // Update task in state immediately
+      setTasks((prev) =>
+        prev.map((task) =>
+          task._id === id ? { ...task, status: res.data.status } : task
+        )
+      );
+    } catch (err) {
+      console.error(err);
+      alert("Failed to update task");
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -68,6 +86,7 @@ export default function Dashboard() {
               key={task._id}
               task={task}
               onDelete={deleteTask}
+              onToggle={toggleTask}
               className="bg-white rounded-xl p-4 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1"
             />
           ))}

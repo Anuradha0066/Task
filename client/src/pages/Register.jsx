@@ -39,7 +39,7 @@ export default function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="bg-green-500 text-white w-full p-2">
+        <button className="bg-green-500 text-white w-full p-2" type="submit">
           Register
         </button>
         <p className="text-sm">

@@ -10,10 +10,19 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  try {
     await login(email, password);
     navigate("/dashboard");
-  };
+  } catch (err) {
+    if (err.response?.status === 400) {
+      alert("User not registered. Please register first.");
+    } else {
+      alert("Something went wrong. Try again.");
+    }
+  }
+};
+
 
   return (
     <div className="h-screen flex items-center justify-center">

@@ -3,6 +3,7 @@ import {
   getTasks,
   createTask,
   deleteTask,
+  completeTask,
 } from "../controllers/taskController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
@@ -13,5 +14,6 @@ router.use(protect);
 router.get("/", getTasks);
 router.post("/", createTask);
 router.delete("/:id", deleteTask);
+router.patch("/:id", completeTask);
 
 export default router;
