@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";  // ← BrowserRouter ADD KARO
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
@@ -8,32 +8,32 @@ import { AuthProvider } from "./auth/AuthContext";
 
 export default function App() {
   return (
-     
-    <AuthProvider>
-      <Routes>
-        {/* ✅ DEFAULT ROUTE */}
-        <Route path="/" element={<Navigate to="/login" />} />
+    <BrowserRouter basename="/Task">  {/* ← YE ADD KARO */}
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                {user ? <Dashboard /> : <Navigate to="/login" />}
+              </ProtectedRoute>
+            }
+          />
 
-        if (loading) return <div>Loading...</div>;
-
-<Route
-  path="/dashboard"
-  element={<ProtectedRoute>{user ? <Dashboard /> : <Navigate to="/login" />}</ProtectedRoute>}
-/>
-
-
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </AuthProvider>
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>  
   );
 }
