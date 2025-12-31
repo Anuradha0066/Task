@@ -21,7 +21,6 @@ app.use(cors({
 
 app.use(express.json());
 app.set('trust proxy', 1);  // Render proxy
-app.options('*', cors());    // Preflight
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
