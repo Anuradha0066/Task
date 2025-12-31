@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Redirecting...</title>
+    <meta charset="utf-8">
+    <script>
+        window.location.replace(window.location.origin + window.location.pathname.split('/')[1] === 'Task' ? '/' : '/Task/');
+    </script>
 </head>
 <body>
-  <script>
-    // GitHub Pages me ROOT pe redirect karo!
-    window.location.href = "/";
-  </script>
-  <noscript>
-    <meta http-equiv="refresh" content="0; url=/">
-  </noscript>
+    <p>Redirecting...</p>
 </body>
 </html>
