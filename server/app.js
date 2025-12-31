@@ -15,7 +15,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',  // Vite dev
-    'https://sage-sorbet-03f25b.netlify.app/'  // Production frontend
+    'https://sage-sorbet-03f25b.netlify.app'  // Production frontend
   ],
   credentials: true  // 🔥 Critical for auth cookies
 }));
